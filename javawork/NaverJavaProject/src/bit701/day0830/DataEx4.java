@@ -15,5 +15,4 @@ public class DataEx4 {
         int a4=045;//앞에 0을 붙이면 8진수로 인식한다 : 4*8+5
         System.out.println(a4);//37
 	}
-
 }
