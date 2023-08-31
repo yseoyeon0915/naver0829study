@@ -10,7 +10,7 @@ public class AsciiEx3 {
 		System.out.println(a1);//A
 		System.out.println(a2);//66
 		System.out.println((int)a1);//65
-		System.out.println((char)a2);
+		System.out.println((char)a2);//B
 		
 		System.out.printf("%d의 아스키문자는 %c이다\n",(int)a1,a1);
 		
