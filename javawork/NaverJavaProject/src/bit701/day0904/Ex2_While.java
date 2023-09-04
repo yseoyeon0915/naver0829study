@@ -13,10 +13,15 @@ public class Ex2_While {
 		double avg=0;
 		while(true)
 		{
-			System.out.println("점수를 입력하세요");
+			System.out.println("점수를 입력하세요(종료:0)");
 			score=sc.nextInt();
 			if(score==0)
 				break;//0입력시 while문을 빠져나간다
+			if(score<1||score>100)
+			{
+				System.out.println("\t1~100 사이의 점수만 입력해주세요");
+				continue; //하던 작업을 중단하고 다시 처음으로 돌아간다
+			}
 		    count++;//입력한 갯수 구하기
 		    sum+=score;//총점 구하기
 		}
@@ -25,7 +30,7 @@ public class Ex2_While {
 		System.out.println("입력된 점수 갯수:"+count);
 		System.out.println("총 합계:"+sum);
 		System.out.println("평균:"+avg);
-
+       
 	}
 
 }
