@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #buttons{
+            margin-left:30px;
+            margin-bottom:20px;
+        }
+
+        #buttons button{
+            width: 80px;
+            height: 40px;
+        }
+
+        #photo{
+            border: 10px groove violet;
+        }
+    </style>
+</head>
+<body>
+    <!--3개의 버튼, 점점작게, 점점크게, 랜덤
+    점점작게: 사진이 5px씩 줄어든다(50보다 클 경우에만 변경)
+    점점크게: 사진이 5px씩 커진다(600px보다 작을경우에만 변경)
+    랜덤: 1~20 사이 난수를 구한 후 해당 사진으로 변경하기
+-->
+  <div id="buttons">
+    <button type="button" id="btnminus">-</button>
+    <button type="button" id="btnplus">+</button>
+    <button type="button" id="btnrandom">랜덤</button>
+  </div>    
+
+    <img src="../연예인사진/12.jpg" style="width:300px;" id="photo">
+    
+<script>
+    //+버튼
+    document.getElementById("btnplus").onclick=function(){    
+        let img=document.getElementById("photo");
+        let w=parseInt(img.style.width, 10);
+     
+        if(w < 600){
+            w+=5;
+            img.style.width = w + "px";
+        }
+   }
+
+    //-버튼
+    document.getElementById("btnminus").onclick=function(){
+        let img=document.getElementById("photo");
+        let w=parseInt(img.style.width,10) 
+        
+        if(w > 50){
+            w-=5;
+            img.style.width = w + "px";
+        }
+    }
+    //랜덤버튼
+    document.getElementById("btnrandom").onclick=function(){
+        let img=document.getElementById("photo");
+        //이미지 변경(1~15 사이의 난수를 구한 후 그 사진으로 변경)
+        let idx=parseInt(Math.random()*20)+1;
+                //이미지의 요소값을 얻는다
+                img.setAttribute("src",`../연예인사진/${idx}.jpg`); 
+    }
+</script>
+    
+    
+
+   
+</body>
+</html>

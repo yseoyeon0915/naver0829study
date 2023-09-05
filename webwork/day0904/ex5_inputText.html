@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div#msg {
+            margin-top: 30px;
+            color: blue;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="txtMsg">
+    <input type="button" id="btn1" value="읽기">
+    <div id="msg">메세지 출력</div>
+    <script>
+        window.onload=function(){
+            let t = document.getElementById("txtMsg");
+            let b = document.getElementById("btn1");
+            let msg = document.getElementById("msg");
+
+            // 버튼 이벤트
+            b.onclick=function(){
+                let data = t.value;
+                // msg.innerText = data;
+                // msg.innerHTML = "<br><b>" + data + "</b>";
+                msg.innerHTML += "<br><b>" + data + "</b>"; // 기존꺼 유지
+
+                t.value = "";
+                t.focus();
+            };
+        }
+    </script>
+</body>
+</html>

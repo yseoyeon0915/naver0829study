@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="../mycar/mycar1.png" alt="차" width="300" id="car1">
+    <script>
+        window.onload=function(){
+            let car1 = document.getElementById("car1");
+            
+            // 1초마다 주기 적으로 호출되는 함수 정의
+            let idx = 2;
+            setInterval(function(){
+                car1.setAttribute("src", `../mycar/mycar${idx}.png`);
+                idx++;
+                if (idx > 15) idx = 1;
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

@@ -22,15 +22,15 @@ public class Ex2_While {
 				System.out.println("\t1~100 사이의 점수만 입력해주세요");
 				continue; //하던 작업을 중단하고 다시 처음으로 돌아간다
 			}
-		    count++;//입력한 갯수 구하기
-		    sum+=score;//총점 구하기
+			count++;//입력한 갯수 구하기
+			sum+=score;//총점 구하기
 		}
 		//0 입력시 빠져나온 후 평균 구하기
 		avg=(double)sum/count;
 		System.out.println("입력된 점수 갯수:"+count);
 		System.out.println("총 합계:"+sum);
 		System.out.println("평균:"+avg);
-       
+
 	}
 
 }
