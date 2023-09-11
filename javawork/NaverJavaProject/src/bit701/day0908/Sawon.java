@@ -31,10 +31,10 @@ public class Sawon {
 	{
 		return name;
 	}
-    
 	
 	public int getAge()
 	{
 		return age;
 	}
+	
 }

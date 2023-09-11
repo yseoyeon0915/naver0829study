@@ -27,7 +27,7 @@ class Hello
 	
 	public int getAge()
 	{
-		return age;
+		return this.age;
 	}
 	
 	//일반 멤버 메서드
