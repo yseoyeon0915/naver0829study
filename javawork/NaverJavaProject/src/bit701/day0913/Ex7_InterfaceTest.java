@@ -1,23 +1,55 @@
 package bit701.day0913;
-
 import java.util.Scanner;
-
 interface Board
 {
 	public void process();
 }
 //총 4개의 sub class 구현
+class Insert implements Board
+{
+	@Override
+	public void process() {
+		// TODO Auto-generated method stub
+		System.out.println("게시판에 글을 추가합니다");
+	}
+}
+
+class Delete implements Board
+{
+	@Override
+	public void process() {
+		// TODO Auto-generated method stub
+		System.out.println("게시판에 글을 삭제합니다");
+	}
+}
+
+class Update implements Board
+{
+	@Override
+	public void process() {
+		// TODO Auto-generated method stub
+		System.out.println("게시판에 글을 수정합니다");
+	}
+}
+
+class List implements Board
+{
+	@Override
+	public void process() {
+		// TODO Auto-generated method stub
+		System.out.println("게시판의 전체 글을 조회합니다");
+	}
+}
 
 
 
 ///////////////////////////////
 public class Ex7_InterfaceTest {
-
+	
 	public static void process(Board b)
 	{
 		b.process();
 	}
-
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner sc=new Scanner(System.in);
@@ -50,7 +82,5 @@ public class Ex7_InterfaceTest {
 			process(b);
 			System.out.println();
 		}
-
 	}
-
 }
