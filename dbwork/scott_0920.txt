@@ -155,38 +155,43 @@ SELECT ENAME,DEPTNO,DECODE(DEPTNO,10,'부산',20,'대구',30,'제주도')FROM EMP;
 
 --문제풀기
 --1. emp테이블에서 ename a나 s로 시작하는사람 출력(대소문자 상관없음)
+select * from emp where ename like 'A%' or ename like'S%';
 
 
-  
 --2. emp테이블에서 ename 에서 두번째 글자가 'A' 인사람 출력
+select * from emp where ename like '_A%';
 
 
-  
 --3. job 에서 같은 직업군일경우 한번씩만 출력하시오(오름차순으로 출력)
-
+select DISTINCT job from emp order by 1; 
 
   
 --4. job 종류별로 인원수를 구하시오(인원수의 내림차순으로 출력)
-
-
+SELECT job, coumt(*) count from emp group by job order by count desc;
 
 
 --5. job 종류별로 sal 의 평균급여를 구하시오,평균급여의 오름차순으로 출력
-
-
+SELECT JOB 직업,  ROUND (AVG (SAL),0) 평균급여 FROM EMP group  by job order by 2;
 
 
 --6. job 종류별로 sal 의 최대값과 최소값을 구하시오
-
-
+select job, max(sal) 최대급여, min(sal) 최소급여 from emp group by job;
 
 
 --7. deptno 가 10인경우 '홍보부'
 --   20 인경우 '개발부' 30인경우 '관리부' 부서를 구하여
 --   ename, 부서 를 출력하시오
+select ename, deptno,decode(deptno,10,'홍보부',20,'개발부',30,'관리부') 부서
+  from emp;
 
+--8. 급여(sal)가 sal 의 평균보다 더 높은 사람만 ename 과 sal 을 출력하시오
+select ename, sal from emp where sal>(select avg(sal) from emp);
 
+--9. hiredate 에서 월이 5월인 사람만 ename 과 hiredate 를 출력하시오
+select ename, hiredate from emp where to_char(hiredate,'mm')=5;
 
+--10. SCOTT 의 급여와 동일하거나 더 많이 받는 사원명과 급여를 출력하라
+select ename, sal from emp where sal>=(select sal from emp where lower(ename)='scott');
 
 
 
