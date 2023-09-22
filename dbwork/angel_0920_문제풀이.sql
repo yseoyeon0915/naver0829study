@@ -53,18 +53,3 @@ commit;
 
 --조회 : 이름  반 자바  스프링  총점  평균 -총점이 높은 사람부터 출력
 select name,ban,java,spring,java+spring total,(java+spring)/2 avg from student order by total desc;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
