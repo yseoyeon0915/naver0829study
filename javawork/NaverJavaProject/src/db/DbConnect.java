@@ -8,8 +8,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DbConnect {
-	static final String MYSQL_DRIVER = "com.mysql.cj.jdbc.Driver";
-	static final String MYSQL_URL = "jdbc:mysql://localhost:3306/bit701?serverTimezone=Asia/Seoul";
+	static final String MYSQL_DRIVER="com.mysql.cj.jdbc.Driver";
+	static final String MYSQL_URL="jdbc:mysql://localhost:3306/bit701?serverTimezone=Asia/Seoul";
 
 	static final String ORACLE_DRIVER="oracle.jdbc.driver.OracleDriver";
 	static final String ORACLE_URL="jdbc:oracle:thin:@localhost:1521:xe";
@@ -23,8 +23,8 @@ public class DbConnect {
 		}
 
 		try {
-			Class.forName(MYSQL_DRIVER);
-		}catch (ClassNotFoundException e) {
+			Class.forName(ORACLE_DRIVER);
+		} catch (ClassNotFoundException e) {
 			System.out.println("오라클 드라이버 오류:"+e.getMessage());
 		}
 	}
@@ -35,7 +35,7 @@ public class DbConnect {
 	{
 		Connection conn=null;
 		try {
-			conn=DriverManager.getConnection(ORACLE_URL, "angel","a1234");
+			conn=DriverManager.getConnection(ORACLE_URL, "angel", "a1234");
 		} catch (SQLException e) {
 			System.out.println("오라클 연결 실패:"+e.getMessage());
 		}
@@ -47,12 +47,11 @@ public class DbConnect {
 	{
 		Connection conn=null;
 		try {
-			conn=DriverManager.getConnection(MYSQL_URL, "root","1234");
+			conn=DriverManager.getConnection(MYSQL_URL, "root", "1234");
 		} catch (SQLException e) {
-			System.out.println("mysql 연결 실패:"+e.getMessage());
+			System.out.println("Mysql 연결 실패:"+e.getMessage());
 		}
 		return conn;
-
 	}
 
 	//close #1
@@ -60,21 +59,21 @@ public class DbConnect {
 	{
 		try {
 			stmt.close();
-			conn.close();
-		} catch (SQLException|NullPointerException e) {
-			System.out.println("close 하다가 오류:"+e.getMessage());
+			conn.close();			
+		}catch(SQLException|NullPointerException e) {
+			System.out.println("close 하다가 오류:"+e.getMessage());			
 		}
 	}
 
 	//close #2
-	public void dbClose(ResultSet rs, Statement stmt,Connection conn)
+	public void dbClose(ResultSet rs,Statement stmt,Connection conn)
 	{
 		try {
 			rs.close();
 			stmt.close();
-			conn.close();
-		} catch (SQLException|NullPointerException e) {
-			System.out.println("close 하다가 오류:"+e.getMessage());
+			conn.close();			
+		}catch(SQLException|NullPointerException e) {
+			System.out.println("close 하다가 오류:"+e.getMessage());			
 		}
 	}
 
@@ -83,49 +82,21 @@ public class DbConnect {
 	{
 		try {
 			pstmt.close();
-			conn.close();
-		} catch (SQLException|NullPointerException e) {
-			System.out.println("close 하다가 오류:"+e.getMessage());
+			conn.close();			
+		}catch(SQLException|NullPointerException e) {
+			System.out.println("close 하다가 오류:"+e.getMessage());			
 		}
 	}
 
 	//close #4
-	public void dbClose(ResultSet rs, PreparedStatement pstmt,Connection conn)
+	public void dbClose(ResultSet rs,PreparedStatement pstmt,Connection conn)
 	{
 		try {
 			rs.close();
 			pstmt.close();
-			conn.close();
-		} catch (SQLException|NullPointerException e) {
-			System.out.println("close 하다가 오류:"+e.getMessage());
+			conn.close();			
+		}catch(SQLException|NullPointerException e) {
+			System.out.println("close 하다가 오류:"+e.getMessage());			
 		}
 	}
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
