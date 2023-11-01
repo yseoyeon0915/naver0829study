@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Permanent+Marker&family=Single+Day&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+
+<style>
+    body * {
+        font-family: 'Jua';
+    }
+</style>
+<script>
+	$(function(){
+		//처음 시작시 모든 데이터 출력
+	    list("");
+	    
+		$("#txtword").keyup(function(e){
+			let search=e.target.value;
+			//$(".result").html(search);
+			list(search);
+            });
+            
+            //삭제 아이콘 클릭시
+            $(document).on("click","myshopdel",function(){
+				let num=$(this).attr("num");
+				let a=confirm("삭제하려면 확인을 눌러주세요!");
+				if(!a) return;
+				
+				//alert(num);
+				$.ajax({
+                type: "get",
+                dataType: "html",
+                url: "ex3_myshopdelete.jsp",
+                data:{"num":num},
+                success:function(res){
+                  //삭제 성공 후 목록 다시 출력
+                  list("");
+                  //search의 검색글자 삭제
+                  $("#txtword").val("");
+               }      
+			});
+		});
+	});
+		
+	function list(search)
+	{
+		$.ajax({
+               type: "get",
+               dataType: "json",
+               url: "ex3_searchdata.jsp",
+               data:{"search":search},
+               success: function (res) {
+                   let s=`<table class="table table-striped" style="width:500px;">`;
+                   $.each(res,function(idx,item){
+					   s+= 
+					   `
+					   <tr>
+						   <td colspan="2">
+							   <b style="font-size:20px">${item.sangpum}</b>
+							   <i class="bi bi-trash myshopdel"
+							   style="cursor: pointer; float:right;font-size:14px;"
+							   num="${item.num}"></i>
+						   </td>
+						<tr>
+						<tr>
+							<td>
+								<img src="../shop/${item.photo}"
+								style="width:250px; height:270px; border:1px solid gray">
+							</td>
+							<td>
+								가격 : ${item.price}<br>
+								색상 : <div class="color"
+								style="background-color:${item.color};
+								width:100px; height:30px; border:1px solid black;"></div>
+								<br>
+								등록일 : <span style="color:gray; font-size:15px">${item.writeday}</span>
+							</td>
+						</tr>
+					   `;
+				   });
+				   
+				   s+="</table>";
+				   $(".result").html(s);
+            }
+	});
+}
+</script>
+</head>
+<body>
+<div style="margin:30px;">
+	<div class="input-group" style="width:400px;">
+		<h5>상품명 검색</h5>
+		<input type="text" class="form-control" style="width:150px; margin-left:50px;"
+		autofocus placeholder="검색단어입력" id="txtword">
+	</div>
+	<div style="margin:20px; font-size: 22px;" class="result">
+		출력
+	</div>
+</div>
+</body>
+</html>
