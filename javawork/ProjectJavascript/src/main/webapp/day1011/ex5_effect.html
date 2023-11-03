@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&family=Permanent+Marker&family=Single+Day&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<style>
+    body * {
+        font-family: 'Jua';
+    }
+</style>
+<script>
+	$(function(){
+		//제목부분
+		$(".title>b").css({
+			"cursor":"pointer",
+			"font-size":"22px"
+		});
+		
+		//내용은 일단 안보이게 처리
+		$("div.content").hide();
+		
+		//제목을 클릭시 해당 기사가 slidown 효과로 내려오게 한다
+		$(".title>b").click(function(){
+			$(this).next().slideDown('slow');
+			
+			//나머지는 내용이 닫히도록한다(효과는 slideUp)
+			$(this).parent().siblings().find("div.content").slideUp('slow');
+		});
+	});
+</script>	
+</head>
+<body>
+ <div class="title alert alert-danger">
+	 <b>오염수 안전하다던 尹 정부, 상반된 연구결과 나오자 비공개</b>
+	 <div class="content">
+		 정부가 일본 후쿠시마 원전 오염수 방류와 관련해 ‘20년 이상 장기간 
+		 추적조사가 필요하다’는 연구용역 결과를 얻고도, 이를 공개하지 않은 것으로 확인됐다.
+
+		그간 처리된 오염수는 안전하다는 입장을 견지하고 있는 윤석열 정부의 주장과 
+		상반된 결과이기 때문에, 비공개 처리 한 것 아니냐는 비판이 나온다. 
+		대통령실에 해당 보고서가 보고됐는지 여부가 쟁점이 될 전망이다.
+	 </div>
+ </div>	
+ <div class="title alert alert-info">
+	 <b>[건방진 퀴즈] "사랑보다 아픈 너"…'사랑니' 최대 몇 개까지 날까?</b>
+	 <div class="content">
+		 '사랑' 때문에 아픈 것 보다 '사랑니' 때문에 아팠다! 
+		 한 개도 아픈데 두개면 얼마나 아프겠어. 
+		 양쪽으로 난 경우엔 죽을 맛인 거지. 그런데 2개는 우습다! 
+		 한번에 상하좌우 사랑니 4개까지 난 사람 있어? 
+		 입안이 치아로 꽉 찬 느낌이었을 거 같은데…, 
+		 여기서 건방진 퀴즈~! 사랑니는 최대 몇 개까지 날 수 있을까? 
+		 정답은 ③ 6개
+	 </div>
+ </div>	
+ <div class="title alert alert-warning">
+	 <b>비만학회 "똑같이 먹어도 나만 살 찌는 이유</b>
+	 <div class="content">
+		 여러분 최근 열풍이 불고 있는 간식 탕후루 아십니까? 
+		 과일에다가 시럽 묻혀서 설탕 시럽 묻혀서 코팅한 중국식 간식인데요. 
+		 청소년층을 중심으로 선풍적인 인기를 끌고 있습니다. 
+		 그런데 이 탕후루가 청소년의 비만, 
+		 당뇨 그리고 충치의 주범이다 해서 내일 국감장의 주제로까지 
+		 오를 예정이라고 하죠. 탕후루뿐만 아니라 단 음식 열풍이 분 지가 꽤 됐습니다. 
+		 이걸 어떻게 봐야 될까요? 또 반대로 다이어트에 효과가 있느냐 없느냐 
+		 논란이 됐던 제로콜라 열풍도 기억하실 겁니다. 오늘이 마침 비만 예방의 날이어서요. 
+		 화제 인터뷰에서 좀 짚어보려고 하는데요. 
+		 대한비만학회 부회장이세요. 가천대 길병원 가정의학과 김경곤 교수 모셨습니다. 
+		 어서 오십시오.
+	 </div>
+ </div>	
+</body>
+</html>
