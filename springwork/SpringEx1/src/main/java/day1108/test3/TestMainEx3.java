@@ -7,9 +7,10 @@ public class TestMainEx3 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-        ApplicationContext context=new ClassPathXmlApplicationContext("appcontext1.xml");
-	    Person p=(Person)context.getBean("person");
-	    p.writeProcee();
+		
+		ApplicationContext context=new ClassPathXmlApplicationContext("appcontext1.xml");
+		Person p=(Person)context.getBean("person");
+		p.writeProcee();
 	}
 
 }

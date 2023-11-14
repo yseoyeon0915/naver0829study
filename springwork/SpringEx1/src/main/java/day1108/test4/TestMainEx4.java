@@ -7,12 +7,10 @@ public class TestMainEx4 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-        ApplicationContext context=new ClassPathXmlApplicationContext("appcontext1.xml");
-
-	      Bitcamp bit=(Bitcamp)context.getBean("bit");
-	      bit.infoProcess();
-	   }
-
+		ApplicationContext context=new ClassPathXmlApplicationContext("appcontext1.xml");
+		
+		Bitcamp bit=(Bitcamp)context.getBean("bit");
+		bit.infoProcess();
 	}
 
-
+}

@@ -3,48 +3,49 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
 
-<bean id="mes1" class="day1108.test2.Message1" scope="singleton"/><!-- 기본값 -->
-   <bean id="mes2" class="day1108.test2.Message2" scope="prototype"/>
+	<bean id="mes1" class="day1108.test2.Message1" scope="singleton"/><!-- 기본값 -->
+	<bean id="mes2" class="day1108.test2.Message2" scope="prototype"/>
 
-   <!-- 예제3 -->
-   <bean id="myshop" class="day1108.test3.MyShop">
-      <constructor-arg>
-         <value>레이스 블라우스</value>
-      </constructor-arg>
-      <property name="color" value="orange"/>
-      <property name="price" value="45000"/>
-   </bean>
-   
-   <bean id="person" class="day1108.test3.Person">
-      <constructor-arg value="캔디"/>
-      <property name="addr">
-         <value>서울시 강남구 역삼동 비트캠프 빌딩</value>
-      </property>
-      <property name="myShop" ref="myshop"/>
-   </bean>
+	<!-- 예제3 -->
+	<bean id="myshop" class="day1108.test3.MyShop">
+		<constructor-arg>
+			<value>레이스 블라우스</value>
+		</constructor-arg>
+		<property name="color" value="orange"/>
+		<property name="price" value="45000"/>
+	</bean>
+	
+	<bean id="person" class="day1108.test3.Person">
+		<constructor-arg value="캔디"/>
+		<property name="addr">
+			<value>서울시 강남구 역삼동 비트캠프 빌딩</value>
+		</property>
+		<property name="myshop" ref="myshop"/>
+	</bean>
 
-   <!-- 예제4 -->
-   <bean id="stu" class="day1108.test4.Student">
-      <property name="name" value="김건훈"/>
-      <property name="age" value="34"/>
-      <property name="blood" value="A"/>
-   </bean>
-   
-   <bean id="sawon" class="day1108.test4.Sawon">
-      <constructor-arg value="김나혜"/>
-      <constructor-arg value="서울"/>
-      <constructor-arg>
-         <list>
-            <value>게임</value>
-            <value>여행</value>
-            <value>낚시</value>
-         </list>
-      </constructor-arg>
-   </bean>
-   
-   <bean id="bit" class="day1108.test4.Bitcamp">
-      <property name="sawon" ref="sawon"/>
-      <property name="stu" ref="stu"/>
-   </bean>
-   
+	<!-- 예제4 -->
+	<bean id="stu" class="day1108.test4.Student">
+		<property name="name" value="김건훈"/>
+		<property name="age" value="34"/>
+		<property name="blood" value="A"/>
+	</bean>
+	
+	<bean id="sawon" class="day1108.test4.Sawon">
+		<constructor-arg value="김나혜"/>
+		<constructor-arg value="서울"/>
+		<constructor-arg>
+			<list>
+				<value>게임</value>
+				<value>여행</value>
+				<value>낚시</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="bit" class="day1108.test4.Bitcamp">
+		<property name="sawon" ref="sawon"/>
+		<property name="stu" ref="stu"/>
+	</bean>
+	
+	
 </beans>

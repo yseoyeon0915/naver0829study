@@ -4,8 +4,8 @@
 	<pluginVersion><![CDATA[3.9.18.202109140629-RELEASE]]></pluginVersion>
 	<configs>
 		<config>
-			<file>src/main/resources/META-INF/appcontext1.xml</file>
-			<name><![CDATA[appcontext1]]></name>
+			<file>src/main/resources/appcontext2.xml</file>
+			<name><![CDATA[appcontext2]]></name>
 		</config>
 	</configs>
 </webflow-project-description>
