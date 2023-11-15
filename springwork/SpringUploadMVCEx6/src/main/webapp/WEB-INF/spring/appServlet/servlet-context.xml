@@ -29,7 +29,8 @@
 		<beans:property name="defaultEncoding" value="utf-8"/>
 		<beans:property name="maxUploadSize" value="4000000"/>
 	</beans:bean>
-	<context:component-scan base-package="study.spring.day1114" />
+	
+	<context:component-scan base-package="study.spring.day1114, study.spring.controller" />
 	
 	
 	

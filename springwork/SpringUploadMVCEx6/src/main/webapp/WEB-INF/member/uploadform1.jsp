@@ -18,7 +18,13 @@
 </style>
 </head>
 <body>
-
+<form action="./upload1" method="post" enctype="multipart/form-data">
+    이름 : <input type="text" name="name"><br>
+    사진 :<input type="file" name="upload"><br>
+    핸드폰 : <input type="text" name="hp"><br>
+    주소 : <input type="text" name="addr"><br>
+    <button type="submit">서버 전송 #1</button>
+</form>
 
 </body>
 </html>

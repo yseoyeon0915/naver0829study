@@ -18,7 +18,20 @@
 </style>
 </head>
 <body>
-
+<h2>폼 2로부터 얻은 결과 출력</h2>
+<h3>
+    이름 : ${mdto.name}<br>
+    핸드폰 : ${mdto.hp}<br>
+    주소 : ${mdto.addr}<br>
+</h3>
+<hr>
+<c:forToken var="photo" items="${mdto.photo}" delims="," varStatus="n">
+   <div style="font-size: 20px;">
+      ${n.count}/${photo}<br>
+      <img src="../photo/${photo}" width="200" border="2">
+      <hr>
+   </div>
+</c:forToken>
 
 </body>
 </html>

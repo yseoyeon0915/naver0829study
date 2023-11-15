@@ -18,7 +18,9 @@
 </style>
 </head>
 <body>
+
 <h2>다양한 방식으로 파일 업로드 연습하기</h2>
+<img src="./photo/K-035.png" width="200" border="3">
 <br>
 <h3>
      <a href="./member/form1">업로드 폼 #1</a>
@@ -26,7 +28,9 @@
 <h3>
      <a href="./member/form1">업로드 폼 #2</a>
 </h3>
-
+<h3>
+     <a href="./member/form1">업로드 폼 #3</a>
+</h3>
 </body>
 </html>
 
