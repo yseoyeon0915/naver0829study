@@ -23,4 +23,9 @@ public class AnswerDao {
 	{
 		return session.selectList(nameSpace+"selectAnswerByNum", num);
 	}
+	
+	public void deleteAnswer(int idx)
+	{
+		session.delete(nameSpace+"deleteAnswer",idx);
+	}
 }

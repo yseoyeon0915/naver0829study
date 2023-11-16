@@ -31,6 +31,4 @@
 	
 	<context:component-scan base-package="spring.study.board, board.*" />
 	
-	
-	
 </beans:beans>

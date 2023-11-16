@@ -102,4 +102,12 @@ public class BoardContentController {
 		
 		return "redirect:./content?num="+dto.getNum();
 	}
+	
+	//¥Ò±€ªË¡¶
+	@GetMapping("/simple/answerdel")
+	public String deleteAnswer(@RequestParam int num, @RequestParam int idx)
+	{
+		answerDao.deleteAnswer(idx);
+		return "redirect:./content?num="+num;
+	}
 }
