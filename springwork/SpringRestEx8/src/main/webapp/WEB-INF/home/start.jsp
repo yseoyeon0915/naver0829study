@@ -15,17 +15,24 @@
        font-family: 'Jua';
    }
   
-</style>ㄴ
+</style>
 </head>
 <body>
 <h3 class="alert alert-danger">Spring REST 예제들</h3>
 
 <ul>
-    <li>
-        <a href="./memo/list">간단한 메모-사진1장 업로드 포함</a>
-    </li>
+	<li>
+		<a href="./memo/list">간단한 메모-사진1장 업로드 포함</a>
+	</li>
+	<li>
+		<a href="./storage/form">네이버 스토리지에 사진 올려보기 연습</a>
+	</li>
+	<li>
+		<a href="./storage/common">네이버 스토리지사진 DB 저장</a>
+	</li>
 </ul>
+<hr>
+
+
 </body>
 </html>
-
-
