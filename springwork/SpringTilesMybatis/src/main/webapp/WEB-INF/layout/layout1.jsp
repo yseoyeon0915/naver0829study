@@ -33,9 +33,8 @@
    div.main_container div.header{
    		width: 100%;
    		height: 100px;
-   		line-height: 100px;
    		text-align: center;
-   		font-size: 30px;
+   		font-size: 13px;
    		font-weight: bold;
    }
    
@@ -56,7 +55,7 @@
    
    div.main_container div.home{
    		position: absolute;
-   		left:200px;
+   		left:230px;
    		top:200px;
    		width:700px;
    		height: 550px;
@@ -89,9 +88,10 @@
 		<tiles:insertAttribute name="home"/>
 	</div>
 	
-	<div class="footer">
+<%-- 	<div class="footer">
 		<tiles:insertAttribute name="footer"/>
-	</div>
+	</div> --%>
+	
 </div>
 
 </body>
