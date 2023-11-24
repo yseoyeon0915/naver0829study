@@ -16,12 +16,22 @@ public class BoardFileService {
 	
 	public void insertPhoto(BoardFileDto dto)
 	{
-		boardFileDao.insertPhoto(dto);
+		 boardFileDao.insertPhoto(dto);
 	}
 	
 	public List<String> getPhotoByNum(int num)
 	{
 		return boardFileDao.getPhotoByNum(num);
+	}
+	
+	public List<BoardFileDto> getFileDataByNum(int num)
+	{
+		return boardFileDao.getFileDataByNum(num);
+	}
+	
+	public void deletePhoto(int idx)
+	{
+		boardFileDao.deletePhoto(idx);
 	}
 	
 }

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.mysql.cj.result.Field;
@@ -202,4 +203,100 @@ public class BoardController {
 		
 		return "board/content";
 	}
+	
+	@GetMapping("/board/delete")
+	public String deleteBoard(@RequestParam int num, @RequestParam int currentPage)
+	{
+		//삭제
+		boardService.deleteBoard(num);
+		
+		return "redirect:./list?currentPage="+currentPage;
+	}
+	
+	@GetMapping("/board/updateform")
+	 public String updateForm(Model model,@RequestParam int num, @RequestParam int currentPage)
+	{
+		BoardDto dto=boardService.getData(num);
+		List<BoardFileDto> flist=boardFileService.getFileDataByNum(num);
+		
+		model.addAttribute("currentPage", flist);
+		model.addAttribute("dto", flist);
+		model.addAttribute("flist", flist);
+		
+		return "board/updateform";
+	}
+	
+	@GetMapping("/board/delphoto")
+	@ResponseBody public void deletePhoto(@RequestParam int idx)
+	{
+		//해당사진 삭제
+		boardFileService.deletePhoto(idx);
+	}
+	
+	//글 수정맵핑
+    @PostMapping("/board/updateboard")
+    public String updateBoard (BoardDto dto,
+          @RequestParam int currentPage,
+          @RequestParam List<MultipartFile> upload,
+          HttpServletRequest request,
+          HttpSession session)
+    {
+       //파일 업로드할 경로
+       String path=request.getSession().getServletContext().getRealPath("/resources/upload");
+                
+       //수정
+       boardService.updateBoard(dto);
+       
+       //사진업로드
+       if(!upload.get(0).getOriginalFilename().equals("")) {
+          //사진업로드안했을경우 리스트의 첫 데이터파일명은 빈문자열
+          //따라서 아닐경우=업로드했을때만 이곳이 실행됨
+          for(MultipartFile multi:upload)
+          {
+             //랜덤파일명생성
+             String fileName=UUID.randomUUID().toString();
+             //업로드
+             try {
+                multi.transferTo(new File(path+"/"+fileName));
+                //파일은 따로 db에 인서트
+                BoardFileDto fdto=new BoardFileDto();
+                fdto.setNum(dto.getNum());//boarddb에 방금 insert된 num값
+                fdto.setPhotoname(fileName);
+                
+                boardFileService.insertPhoto(fdto);
+             } catch (IllegalStateException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+             } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+             }
+          }
+       }
+       //수정 후 내용보기로 이동
+       return "redirect:./content?currentPage="+currentPage+"&num="+dto.getNum();
+    }
+	
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

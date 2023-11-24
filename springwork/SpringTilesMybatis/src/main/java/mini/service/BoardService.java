@@ -83,4 +83,32 @@ public class BoardService {
 	{
 		return boardDao.getData(num);
 	}
+	
+	public void updateBoard(BoardDto dto)
+	{
+		boardDao.updateBoard(dto);
+	}
+	
+	public void deleteBoard(int num)
+	{
+		boardDao.deleteBoard(num);
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
