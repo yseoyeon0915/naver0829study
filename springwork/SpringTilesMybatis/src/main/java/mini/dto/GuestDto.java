@@ -14,5 +14,6 @@ public class GuestDto {
     private String guest_content;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm", timezone = "Asia/Seoul")
     private Timestamp guest_writeday;
+    private String trans_lang;
    
 }

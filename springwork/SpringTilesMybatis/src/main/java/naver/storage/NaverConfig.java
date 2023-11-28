@@ -17,16 +17,16 @@ public class NaverConfig {
 	@Value ("kr-standard")
 	private String regionName;
 	
-	@Value("8yt6c0uo9is9HLAN1BZH")    //강사키
-	private String accessKey;
-	
-	@Value("tmFGzatUiqw0C91hSR9Cx9jwPX5DWSzwLFRn3XC0")
-	private String secretKey;
-
-
-//	@Value("xrnSmaHvprB8BEd3HWuK")
+//	@Value("8yt6c0uo9is9HLAN1BZH")    //강사키
 //	private String accessKey;
-//
-//	@Value("VgFA9sMpXPpGCE5KbDjovdIDKX8f2ya2VOy6yoF9")
+//	
+//	@Value("tmFGzatUiqw0C91hSR9Cx9jwPX5DWSzwLFRn3XC0")
 //	private String secretKey;
+
+
+	@Value("xrnSmaHvprB8BEd3HWuK")
+	private String accessKey;
+
+	@Value("VgFA9sMpXPpGCE5KbDjovdIDKX8f2ya2VOy6yoF9")
+	private String secretKey;
 }

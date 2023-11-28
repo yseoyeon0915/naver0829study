@@ -17,7 +17,7 @@
   
    ul.menu{
    		list-style: none;
-   		width: 800px;
+   		width: 900px;
    		height: 80px;
    		margin-left: 100px;
    }
@@ -62,6 +62,9 @@
 	</li>
 	<li>
 		<a href="${root}/guest/list">방명록</a>
+	</li>
+	<li>
+		<a href="${root}/face">얼굴인식</a>
 	</li>
 	<li>
 		<a href="${root}/map">오시는길</a>

@@ -11,7 +11,7 @@ import mini.dto.GuestDto;
 @Service
 @AllArgsConstructor
 public class GuestService {
-
+	
 	private GuestDao guestDao;
 	
 	public void insertGuest(GuestDto dto)
@@ -26,7 +26,7 @@ public class GuestService {
 	
 	public void deleteGuest(int guest_num)
 	{
-	    guestDao.deleteGuest(guest_num);
+		guestDao.deleteGuest(guest_num);
 	}
-	
+
 }
