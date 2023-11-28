@@ -24,6 +24,7 @@ import com.mysql.cj.result.Field;
 import mini.dao.MemberDao;
 import mini.dto.BoardDto;
 import mini.dto.BoardFileDto;
+import mini.service.BoardAnswerService;
 import mini.service.BoardFileService;
 import mini.service.BoardService;
 
@@ -35,6 +36,9 @@ public class BoardController {
 
 	@Autowired
 	private BoardFileService boardFileService;
+	
+	@Autowired
+	private BoardAnswerService answerService;
 	
 	@Autowired
 	private MemberDao memberDao;
@@ -84,7 +88,11 @@ public class BoardController {
 			int pcount=boardFileService.getPhotoByNum(dto.getNum()).size();
 			//System.out.println(dto.getNum()+":"+ pcount);
 			dto.setPhotocount(pcount);
-		}
+		
+			//댓글 개수 저장
+			int acount=answerService.getAnswerBoard(dto.getNum()).size();
+			dto.setAcount(acount);
+	    }
 
 		//request 에 담을 값들
 		model.addAttribute("list",list);

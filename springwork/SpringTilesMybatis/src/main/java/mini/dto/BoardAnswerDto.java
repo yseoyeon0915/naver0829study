@@ -14,6 +14,6 @@ public class BoardAnswerDto {
 	private String ansid;
 	private String ansphoto;
 	private String ansmsg;
-	@JsonFormat(pattern = "yyyy-MM-dD HH:mm", timezone = "Asia/Seoul")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm",timezone = "Asia/Seoul")
 	private Timestamp writeday;
 }
