@@ -58,4 +58,27 @@ public class MyShopController {
 		
 		return "redirect:./";
 	}
+	
+	@GetMapping("/detail")
+	public String detail(@RequestParam("num") int num, Model model)
+	{
+		//num에 해당하는 dto 얻기
+		MyShopDto dto=shopService.getData(num);
+		model.addAttribute("dto", dto);
+		return "myshop/shopdetail";
+	}
+	
+	@GetMapping("/delete")
+	public String delete(@RequestParam("num") int num)
+	{
+		//db 삭제전에 스토리지의 기존 사진부터 삭제
+		//사진이름 얻기
+		String photo=shopService.getData(num).getPhoto();
+		//스토리지 삭제
+		storageService.deleteFile(bucketName, folderName, photo);
+		//db삭제
+		shopService.deleteShop(num);
+		//목록으로 이동
+		return "redirect:./";
+	}
 }
