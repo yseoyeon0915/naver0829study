@@ -30,25 +30,25 @@ public class MyCarController {
 	private final NcpObjectStorageService storageService;
 
 	//버켓네임 지정
-	private String bucketName="bitcamp-lmh";
+	private String bucketName="bitcamp-ysy";
 	//저장할 폴더네임 지정
 	private String folderName="bootmyshop";
 
-//	@GetMapping("/")
-//	public String list(Model model)
-//	{
-//		//전체갯수
-//		Long totalCount=myCarDao.getTotalCount();
-//		//전체목록 가져오기
-//		List<MyCarDto> list=myCarDao.getAllCars();
-//
-//		model.addAttribute("totalCount", totalCount);
-//		model.addAttribute("list", list);
-//		return "mycar/mycarlist";
-//	}
-	
+	//	@GetMapping("/")
+	//	public String list(Model model)
+	//	{
+	//		//전체갯수
+	//		Long totalCount=myCarDao.getTotalCount();
+	//		//전체목록 가져오기
+	//		List<MyCarDto> list=myCarDao.getAllCars();
+	//
+	//		model.addAttribute("totalCount", totalCount);
+	//		model.addAttribute("list", list);
+	//		return "mycar/mycarlist";
+	//	}
+
 	int pageSize;
-	
+
 	@GetMapping("/")
 	public String list(Model model,@RequestParam(value = "more",defaultValue = "0") int more)
 	{
@@ -60,7 +60,7 @@ public class MyCarController {
 			pageSize+=more;
 		//페이징처리를 위한 클래스
 		Pageable pageable=PageRequest.of(0, pageSize,Sort.by("num").ascending());
-		
+
 		//페이지에 필요한 만큼만 가져오기
 		Page<MyCarDto> result=myCarDao.getAllCars(pageable);
 
@@ -68,7 +68,7 @@ public class MyCarController {
 		model.addAttribute("totalPage",result.getTotalPages());
 		model.addAttribute("list", result.getContent());
 		model.addAttribute("pageSize", pageSize);
-		
+
 		return "mycar/mycarlist";
 	}
 
@@ -77,7 +77,7 @@ public class MyCarController {
 	{
 		return "mycar/mycarform";
 	}
-	
+
 	@PostMapping("/insert")
 	public String insert(@ModelAttribute MyCarDto dto,@RequestParam("upload") MultipartFile upload)
 	{
@@ -87,13 +87,63 @@ public class MyCarController {
 		dto.setCarphoto(carphoto);
 		//db insert
 		myCarDao.insertMyCar(dto);
-		
+
 		return "redirect:./";//목록으로 이동
 	}
-	
+
 	@GetMapping("detail")
-	public String detail(Model model)
+	public String detail(Model model,@RequestParam("num") Long num)
 	{
+		MyCarDto dto=myCarDao.getData(num);
+		model.addAttribute("dto", dto);
 		return "mycar/mycardetail";
 	}
+
+	@GetMapping("/delete")
+	public String delete(@RequestParam("num") Long num)
+	{
+		//스토리지의 사진부터 삭제하기
+		String carphoto=myCarDao.getData(num).getCarphoto();
+		storageService.deleteFile(bucketName, folderName, carphoto);
+		//db 삭제
+		myCarDao.deleteMyCar(num);
+		//목록으로 이동
+		return "redirect:./";
+	}
+
+	@GetMapping("/carupdate")
+	public String updateForm(Model model,@RequestParam("num") Long num)
+	{
+		//num 에 해당하는 dto
+		MyCarDto dto=myCarDao.getData(num);
+
+		model.addAttribute("dto", dto);
+
+		return "mycar/mycarupdateform";
+	}	
+
+	@PostMapping("/update")
+	public String update(@ModelAttribute MyCarDto dto,@RequestParam("upload") MultipartFile upload)
+	{
+		if(upload.getOriginalFilename().equals("")) {
+			//폼에서 사진을 선택 안한경우
+			myCarDao.updateMycarNoPhoto(dto);
+		}else {
+			//사진 수정전에 기존사진 먼저 삭제하기
+			String carphoto=myCarDao.getData(dto.getNum()).getCarphoto();
+			storageService.deleteFile(bucketName, folderName, carphoto);
+
+			//새로 업데이트한 사진 스토리지에 저장
+			String newCarphoto=storageService.uploadFile(bucketName, folderName, upload);
+			//dto 에서 사진명 수정
+			dto.setCarphoto(newCarphoto);
+
+			//db 수정
+			myCarDao.updateMyCar(dto);
+		}
+
+		//상세보기 페이지로 이동
+		return "redirect:./detail?num="+dto.getNum();
+	}
+
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import lombok.AllArgsConstructor;
@@ -47,5 +48,34 @@ public class MyCarDao {
 	public MyCarDto getData(Long num)
 	{
 		return daoInter.getReferenceById(num);
+		//return daoInter.getById(num);//deprecate
 	}
+	
+	//delete
+	public void deleteMyCar(Long num)
+	{
+		daoInter.deleteById(num);
+	}
+	
+	//update
+	public void updateMyCar(MyCarDto dto)
+	{
+		daoInter.save(dto);//dto에 num이 포함되어있으므로 수정된다
+	}
+	
+	//자동차명, 가격, 색상만 수정(사진 수정 안하는 메서드)
+	public void updateMycarNoPhoto(MyCarDto dto)
+	{
+//		Long num=dto.getNum();
+//		String carname=dto.getCarname();
+//		String carcolor=dto.getCarcolor();
+//		int carprice=dto.getCarprice();
+//		
+//		daoInter.updateMycarNoPhoto(num, carname, carprice, carcolor);
+		
+		//dto 로 직접 파라미터를 넘긴경우로 테스트하기
+		//사진을 제외한 나머지 컬럼을 모두 수정하기
+		daoInter.updateMycarDTONoPhoto(dto);
+	}
+	
 }
