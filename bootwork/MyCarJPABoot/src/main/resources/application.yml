@@ -11,13 +11,13 @@ spring:
     
     
 #JPA setting
-#스키마 생성 create : 기존 테이블 삭제 후 생성, update:변경된 부분만 반영
+#스키마 생성 create:기존테이블삭제후 생성, update:변경된 부분만 반영
   jpa:
     hibernate:
       ddl-auto: update
-#ddl생성시 데이타베이스 고유의 기능을 사용할 것 인지
-    generate-ddl: true 
-#api 호출 시 실행되는 sql문을 콘솔에 보여줄 것 인지
+#ddl 생성시 데이타베이스 고유의 기능을 사용할 것인가     
+    generate-ddl: true
+#api 호출시 실행되는 sql 문을 콘솔에 보여줄것인가        
     show-sql: true
-#Mysql 상세 지정    
+#Mysql 상세지정    
     database-platform: org.hibernate.dialect.MySQLDialect
