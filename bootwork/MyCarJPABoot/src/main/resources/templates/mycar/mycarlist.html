@@ -47,6 +47,12 @@
 					  
 					<!--자동차명-->
 					[[${dto.carname}]]
+					
+					<!-- 댓글 개수 -->
+					<span style="margin-left:10px; color: red;"
+					th:if="${dto.commentcount>0}">
+						([[${dto.commentcount}]])
+					</span>
 				</a>
 			</td>
 			<td align="center">
