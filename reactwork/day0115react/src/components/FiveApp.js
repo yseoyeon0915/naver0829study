@@ -6,7 +6,7 @@ function FiveApp(props) {
         <div>
             <h3 className='alert alert-danger'>FiveApp-배열-추가/삭제</h3>
             <input type='text' className='form-control'
-            style={{width:'200px'}}placeholder='메세지입력'
+            style={{width:'200px'}} placeholder='메세지입력'
             onKeyUp={(e)=>{
                 if(e.key==='Enter'){
                     //alert(e.target.value);
@@ -26,13 +26,17 @@ function FiveApp(props) {
                 {
                     msg.map((m,i)=>(<h6 key={i} className='select'
                     onDoubleClick={(e)=>{
-                        //alert(i);
-                        //방법1 : slice : 0~i-1펼침, i+1~끝까지 펼침
-                        setMsg([
-                            ...msg.slice(0,i),
-                            ...msg.slice(i+1,msg.length)
-                            ]
-                        )
+                        // //alert(i);
+                        // //방법1 : slice : 0~i-1펼침, i+1~끝까지 펼침
+                        // setMsg([
+                        //     ...msg.slice(0,i),
+                        //     ...msg.slice(i+1,msg.length)
+                        //     ]
+                        // )
+
+                        //방법 2: filter
+                        setMsg(msg.filter((item,idx)=>i!==idx));
+
                     }}>{i+1}:{m}</h6>))
                 }
             
