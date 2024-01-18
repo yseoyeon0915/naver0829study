@@ -34,11 +34,11 @@ public class GuestDto {
 	@Column(length = 1000)
 	private String content;
 	
-	@Column(length = 90)
+	@Column(length = 20)
 	private String nickname;
 	
 	@CreationTimestamp
 	@Column(updatable = false)
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm", timezone = "Aisa/Seoul")
-	private Timestamp writeday;
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm",timezone = "Asia/Seoul")
+	private Timestamp writeday;	
 }
