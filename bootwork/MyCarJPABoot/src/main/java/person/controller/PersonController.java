@@ -42,4 +42,21 @@ public class PersonController {
 		System.out.println("delete>>"+pnum);
 		personDao.deletePerson(pnum);
 	}
+	
+	//dto반환
+	@GetMapping("/person/select")
+	public PersonDto select(@RequestParam("pnum") int pnum)
+	{
+		System.out.println("select>>"+pnum);
+		return personDao.getSelectData(pnum);
+	}
+	
+	//수정
+	@PostMapping("/person/update")
+	public void update(@RequestBody PersonDto dto)
+	{
+		System.out.println("update>>"+dto);
+		personDao.updatePerson(dto);
+	}
+	
 }
