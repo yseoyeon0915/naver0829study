@@ -1,13 +1,13 @@
 import React from 'react';
 import './components/MyStyle.css';
-import {NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Menu = () => {
     return (
         <div>
             <ul className='menu'>
                 <li>
-                    <NavLink to={'/'}>Home</NavLink>
+                    <NavLink to={'/'}>Home</NavLink>                   
                 </li>
                 <li>
                     <NavLink to={'/callback'}>CallBack</NavLink>
@@ -16,7 +16,7 @@ const Menu = () => {
                     <NavLink to={'/memo'}>Memo</NavLink>
                 </li>
                 <li>
-                    <NavLink to={'/reducer'}>Reducer</NavLink>
+                     <NavLink to={'/reducer'}>Reducer</NavLink>
                 </li>
                 <li>
                     <NavLink to={'/context'}>Context</NavLink>
@@ -25,7 +25,7 @@ const Menu = () => {
                     <NavLink to={'/sweet'}>SweetAlert</NavLink>
                 </li>
                 <li>
-                    <NavLink to={'/query'}>QueryString</NavLink>
+                    <NavLink to={'/query?color=pink&name=lee&addr=seoul'}>QueryString</NavLink>
                 </li>
             </ul>
         </div>
