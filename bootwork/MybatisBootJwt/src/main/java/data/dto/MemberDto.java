@@ -25,6 +25,5 @@ public class MemberDto {
 	private String hp;
 	private String addr;
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm",timezone = "Asia/Seoul")
-	private Timestamp gaipday;
-
+	private Timestamp gaipday;	
 }
