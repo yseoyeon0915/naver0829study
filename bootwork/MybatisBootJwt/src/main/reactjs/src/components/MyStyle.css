@@ -5,7 +5,7 @@ ul.menu{
 
 ul.menu li{
     float: left;
-    width: 100px;
+    width:110px;
     height: 60px;
     font-size: 20px;
     border: 1px solid gray;
@@ -22,11 +22,14 @@ ul.menu li a{
     color: yellow;
     cursor: pointer;
 }
-
 ul.menu li:hover{
     background-color: aquamarine;
 }
-
 ul.menu li a:hover{
-    color: palevioletred;
+    color:palevioletred;
+}
+
+.pagenum{
+    text-decoration: none;
+    margin-right: 5px;
 }

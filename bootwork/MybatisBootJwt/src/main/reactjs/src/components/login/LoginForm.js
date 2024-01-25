@@ -11,44 +11,46 @@ const LoginForm = () => {
         let session_token=sessionStorage.token;
         console.log(session_token);
         setToken(session_token);
-
     },[]);//처음 시작시 한번만 호출
 
-    const buttonLoginEvent = () =>{
+    const buttonLoginEvent=()=>{
         axios.post("/login/auth",{myid,pass})
         .then(res=>{
-            if(res.data.result==='noid'){
+           if(res.data.result==='noid'){
                 Swal.fire("회원 아이디가 아닙니다");
-            } else if (res.data.result==='nopass'){
+            }else if(res.data.result==='nopass'){
                 Swal.fire("비밀번호가 맞지 않습니다");
-            } else{
-                //토근을 얻어서 세션 스토리지에 token이라는 이름으로 저장한다
+            }else{
+                //토큰을 얻어서 세션 스토리지에 token 이라는 이름으로 저장한다
                 sessionStorage.token=res.data.token;
+                //아이디도 세션 스토리지에 저장
+                sessionStorage.myid=myid;
+
                 setToken(res.data.token);
+                window.location.reload();
             }
         })
     }
-
     return (
-        <div>
+        <div>           
             {
                 token==null?
                 <div>
-                    <h4 className='alert alert-dnager'>로그인 폼</h4>
-                    <table className='table table-bordered' style={{width:'250px'}}>
+                     <h4 className='alert alert-danger'>로그인 폼</h4>
+                     <table className='table table-bordered' style={{width:'250px'}}>
                         <tbody>
                             <tr>
                                 <th width={100} style={{backgroundColor:'#ccc'}}>아이디</th>
                                 <td>
                                     <input type='text' className='form-control'
-                                    value={myid} onChange={(e)=>setMyid(e.target.value)}/>
+                                      value={myid} onChange={(e)=>setMyid(e.target.value)}/>
                                 </td>
                             </tr>
                             <tr>
                                 <th width={100} style={{backgroundColor:'#ccc'}}>비밀번호</th>
                                 <td>
                                     <input type='password' className='form-control'
-                                    value={pass} onChange={(e)=>setPass(e.target.value)}/>
+                                      value={pass} onChange={(e)=>setPass(e.target.value)}/>
                                 </td>
                             </tr>
                             <tr>
@@ -60,21 +62,22 @@ const LoginForm = () => {
                                 </td>
                             </tr>
                         </tbody>
-                    </table>
+                     </table>
                 </div>
                 :
                 <div>
-                    <h4 className='alert alert-dnager'>로그인 중입니다</h4>
-                    <br/><br/>
-                    <img alt='' src={require("../../image/05.png")}/>
-                    <br/><br/>
-                    <button type='button' className='btn btn-danger'
-                    onClick={()=>{
-                        sessionStorage.removeItem("token");
-                        setToken(null);
-                        setMyid('');
-                        setPass('');
-                    }}>로그아웃</button>
+                        <h4 className='alert alert-danger'>{sessionStorage.myid}님이 로그인중입니다</h4>
+                        <br/><br/>
+                        <img alt='' src={require("../../image/05.png")}/>
+                        <br/><br/>
+                        <button type='button' className='btn btn-danger'
+                        onClick={()=>{
+                            sessionStorage.removeItem("token");
+                            setToken(null);
+                            setMyid('');
+                            setPass('');
+                            window.location.reload();
+                        }}>로그아웃</button>
                 </div>
             }
         </div>

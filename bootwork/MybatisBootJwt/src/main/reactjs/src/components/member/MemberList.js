@@ -37,7 +37,7 @@ const MemberList = () => {
             {
                 memberlist &&
                 memberlist.map((row,idx)=>(
-                    <MemberRowItem key={idx} row={row}/>
+                    <MemberRowItem key={idx} row={row} deleteMember={deleteMember}/>
                 ))
             }
                 </tbody>

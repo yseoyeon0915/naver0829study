@@ -15,7 +15,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 //Security filterchain을 구성하기 위한 어노테이션
 @EnableWebSecurity
 public class SecurityConfiguration {
-	//private JwtAuthenticationEntryPoint unauthorizedHandler;
+	private JwtAuthenticationEntryPoint unauthorizedHandler;
 	//비밀번호 암호화를 위한 PasswordEncoder
 	//복호화가 불가능. match라는 메소드를 이용해서 사용자의 입력값과 DB의 저장값을 비교
 	/*
@@ -48,8 +48,8 @@ public class SecurityConfiguration {
 		//요청 주소에 대한 권한 설정
 		.authorizeHttpRequests((authorizeRequests) -> {
 			//'/'요청은 모든 사용자가 이용가능
-			authorizeRequests			
-			.requestMatchers("/**").permitAll()
+			authorizeRequests
+			.requestMatchers("/*").permitAll()
 			.requestMatchers("/favicon.ico").permitAll()
 			.requestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")).permitAll()
 			//css, js, images, upload 같은 정적 리소스들도 권한처리 필수
@@ -57,10 +57,11 @@ public class SecurityConfiguration {
 			.requestMatchers("/js/**").permitAll()
 			.requestMatchers("/upload/**").permitAll()
 			.requestMatchers("/images/**").permitAll()
-			.requestMatchers("/member/**").permitAll()			
+			.requestMatchers("/member/**").permitAll()
 			.requestMatchers("/login/auth").permitAll()
+			.requestMatchers("/board/**").permitAll()
 			//이외의 요청은 인증된 사용자만 사용자만 사용가능
-			.anyRequest().authenticated();	
+			.anyRequest().authenticated();					
 		})
 		.headers(headers -> headers.frameOptions().disable());
 //		.csrf(csrf -> csrf
